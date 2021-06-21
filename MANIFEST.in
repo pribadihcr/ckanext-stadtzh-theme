@@ -1,0 +1,2 @@
+recursive-include ckanext/stadtzhtheme *.html *.json *.js *.less *.css *.mo
+recursive-include ckanext/stadtzhtheme/i18n *
