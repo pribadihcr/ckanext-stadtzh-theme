@@ -1,0 +1,31 @@
+{% ckan_extends %}
+
+{% block links -%}
+  <link rel="alternate" type="application/rdf+xml" href="{{ h.url_for(controller='package', action='read', id=pkg.id, format='rdf', qualified=True) }}"/>
+{% endblock -%}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon('dataset_read', _('Dataset'), id=pkg.name) }}
+  {{ h.build_nav_icon('dataset_groups', _('Groups'), id=pkg.name) }}
+  {{ h.build_nav_icon('dataset_showcase_list', _('Showcases'), id=pkg.name) }}
+{% endblock %}
+
+{# Get rid of info block (package title, follower count and follow button) #}
+{% block package_info %}
+{% endblock %}
+
+{% block package_organization %}
+   {# Organization should not be shown as there is only one data provider #}
+{% endblock %}
+
+{% block package_social %}
+    {# Social media links should not be displayed #}
+{% endblock %}
+
+{% block structured_data %}
+  {% if h.helper_available('structured_data') %}
+  <script type="application/ld+json">
+  {{ h.structured_data(pkg.id, ['stadtzh_schemaorg'])|safe }}
+  </script>
+  {% endif %}
+{% endblock %}
